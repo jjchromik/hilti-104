@@ -33,10 +33,10 @@ export type Info_obj_code= enum {
     M_SP_NA_1 = 1,      #implemented R. Udd
     M_SP_TA_1 = 2,      #implemented: example of Type ID not applicable to the companion standard
     M_DP_NA_1 = 3,      #implemented JCh
-    M_DP_TA_1 = 4,      # X
+    M_DP_TA_1 = 4,      # X: example of Type ID not applicable to the companion standard
     M_ST_NA_1 = 5,      #implemented JCh
-    M_ST_TA_1 = 6,      # X
-    M_BO_NA_1 = 7,      # TODO
+    M_ST_TA_1 = 6,      # X: example of Type ID not applicable to the companion standard
+    M_BO_NA_1 = 7,      #implemented JCh/ test the biststing 
     M_BO_TA_1 = 8,
     M_ME_NA_1 = 9,      #implemented R. Udd
     M_ME_TA_1 = 10,
@@ -54,11 +54,11 @@ export type Info_obj_code= enum {
     #22-29 reserved
     #process information in monitoring direction cont’d 30-44
     M_SP_TB_1 = 30,     #implemented R. Udd
-    M_DP_TB_1 = 31,     # TODO
-    M_ST_TB_1 = 32,     # TODO
-    M_BO_TB_1 = 33,     # TODO
+    M_DP_TB_1 = 31,     #implemented JCh
+    M_ST_TB_1 = 32,     #implemented JCh
+    M_BO_TB_1 = 33,     #implemented JCh /test the bitstring? 
     M_ME_TD_1 = 34,     #implemented JCh
-    M_ME_TE_1 = 35,     # TODO
+    M_ME_TE_1 = 35,     #implemented JCh
     M_ME_TF_1 = 36,     #implemented JCh
     M_IT_TB_1 = 37,
     M_EP_TD_1 = 38,
@@ -67,12 +67,12 @@ export type Info_obj_code= enum {
     #41-44 reserved
     #process information in control direction 45-51
     C_SC_NA_1 = 45,     #implemented R. Udd
-    C_DC_NA_1 = 46,     # TODO
-    C_RC_NA_1 = 47,     # TODO
+    C_DC_NA_1 = 46,     #implemented JCh 
+    C_RC_NA_1 = 47,     #implemented JCh 
     C_SE_NA_1 = 48,     #implemented JCh
-    C_SE_NB_1 = 49,
+    C_SE_NB_1 = 49,     #implemented JCh
     C_SE_NC_1 = 50,     #implemented JCh
-    C_BO_NA_1 = 51,     # TODO
+    C_BO_NA_1 = 51,     #implemented JCh /test the bitstring? 
     #52-57 reserved
     #process information in control direction with time tag 58-64
     C_SC_TA_1 = 58,     #implemented JCh
@@ -111,12 +111,12 @@ export type Info_obj_code= enum {
     F_SG_NA_1 = 125,
     F_DR_TA_1 = 126,
     #127 reserved
-    C_HU_NA_P = 136,  #DataWatt: Hang up dialled line
-    C_LD_NA_P = 137,  #DataWatt: Login data
-    C_IH_NA_P = 142,  #DataWatt: Requesting the historical data
-    C_SU_NA_P = 143,  #DataWatt: Setting for Daylight saving time 
-    X_DS_NA_P = 200,  #DataWatt: DSAP Messages - DataWatt Serial Application Protocol
-    X_MP_NA_P = 201   #DataWatt: Master Poll Request
+    C_HU_NA_P = 136,  #DW: Hang up dialled line
+    C_LD_NA_P = 137,  #DW: Login data
+    C_IH_NA_P = 142,  #DW: Requesting the historical data
+    C_SU_NA_P = 143,  #DW: Setting for Daylight saving time 
+    X_DS_NA_P = 200,  #DW: DSAP Messages - DW Serial Application Protocol
+    X_MP_NA_P = 201   #DW: Master Poll Request
 };
 
 #Cause of transmission
@@ -239,6 +239,8 @@ export type Asdu = unit {
         Info_obj_code::M_DP_NA_1 -> m_dp_na_1 : Double_Point_Information(self.data_unit_identifier.seq)[self.data_unit_identifier.num_ix];
         #5
         Info_obj_code::M_ST_NA_1 -> m_st_na_1 : Step_Position_Information(self.data_unit_identifier.seq)[self.data_unit_identifier.num_ix];
+        #7
+        Info_obj_code::M_BO_NA_1 -> m_bo_na_1 : Bitstring_32_Bits(self.data_unit_identifier.seq)[self.data_unit_identifier.num_ix];
         #9
         Info_obj_code::M_ME_NA_1 -> m_me_na_1 : Measured_Value_Normalized_Value(self.data_unit_identifier.seq)[self.data_unit_identifier.num_ix];
         #11 
@@ -247,16 +249,32 @@ export type Asdu = unit {
         Info_obj_code::M_ME_NC_1 -> m_me_nc_1 : Measured_Value_Short_Floating_Point_Value(self.data_unit_identifier.seq)[self.data_unit_identifier.num_ix];
         #30
         Info_obj_code::M_SP_TB_1 -> m_sp_tb_1 : Single_Point_Information_With_TTCP56(self.data_unit_identifier.seq)[self.data_unit_identifier.num_ix];
+        #31
+        Info_obj_code::M_DP_TB_1 -> m_dp_tb_1 : Double_Point_Information_With_TTCP56(self.data_unit_identifier.seq)[self.data_unit_identifier.num_ix];
+        #32
+        Info_obj_code::M_ST_TB_1 -> m_st_tb_1 : Step_Position_Information_With_TTCP56(self.data_unit_identifier.seq)[self.data_unit_identifier.num_ix];
+        #33
+        Info_obj_code::M_BO_TB_1 -> m_bo_tb_1 : Bitstring_32_Bits_With_TTCP56(self.data_unit_identifier.seq)[self.data_unit_identifier.num_ix];
         #34
         Info_obj_code::M_ME_TD_1 -> m_me_td_1 : Measured_Value_Normalized_Value_With_TTCP56(self.data_unit_identifier.seq)[self.data_unit_identifier.num_ix];
+        #35
+        Info_obj_code::M_ME_TE_1 -> m_me_te_1 : Measured_Value_Scaled_Value_With_TTCP56(self.data_unit_identifier.seq)[self.data_unit_identifier.num_ix];
         #36 
         Info_obj_code::M_ME_TF_1 -> m_me_tf_1 : Measured_Value_Short_Floating_Point_With_TTCP56(self.data_unit_identifier.seq)[self.data_unit_identifier.num_ix];
         #45
         Info_obj_code::C_SC_NA_1 -> c_sc_na_1 : Single_Command(self.data_unit_identifier.seq)[self.data_unit_identifier.num_ix];
+        #46
+        Info_obj_code::C_DC_NA_1 -> c_dc_na_1 : Double_Command(self.data_unit_identifier.seq)[self.data_unit_identifier.num_ix];
+        #47
+        Info_obj_code::C_RC_NA_1 -> c_rc_na_1 : Regulating_Step_Command(self.data_unit_identifier.seq)[self.data_unit_identifier.num_ix];
         #48
         Info_obj_code::C_SE_NA_1 -> c_se_na_1 : Set_Point_Command_Normalized_Value(self.data_unit_identifier.seq)[self.data_unit_identifier.num_ix];
+        #49
+        Info_obj_code::C_SE_NB_1 -> c_se_nb_1 : Set_Point_Command_Scaled_Value(self.data_unit_identifier.seq)[self.data_unit_identifier.num_ix];
         #50 
         Info_obj_code::C_SE_NC_1 -> c_se_nc_1 : Set_Point_Command_Short_Floating_Point_Value(self.data_unit_identifier.seq)[self.data_unit_identifier.num_ix];
+        #51
+        Info_obj_code::C_BO_NA_1 -> c_bo_na_1 : Bitstring_32_Bits_Command(self.data_unit_identifier.seq)[self.data_unit_identifier.num_ix];
         #58
         Info_obj_code::C_SC_TA_1 -> c_sc_ta_1 : Single_Command_With_TTCP56(self.data_unit_identifier.seq)[self.data_unit_identifier.num_ix];
         #61
@@ -287,7 +305,7 @@ export type Asdu = unit {
         #print "INIT ASDU";
     }
     on %done {
-        #print self;
+        print self;
     }
 }; 
 
@@ -359,6 +377,16 @@ type Step_Position_Information = unit (seq : bool){ #5
     } 
 };
 
+#7
+type Bitstring_32_Bits = unit (seq : bool){ #7
+    info_obj_addr: bytes &length=ioa_length &convert=$$.to_uint(Spicy::ByteOrder::Little) if (!seq); #not 100% sure that the length is always correct
+    binary_state_information : bytes &length=4;# &byteorder = Spicy::ByteOrder::Little;  #bitfield(32){ val: 0..31; }
+    quality_descriptor : QDS;
+    on %init {
+    print "INIT 7";
+    } 
+};
+
 #9
 type Measured_Value_Normalized_Value = unit (seq : bool){ #9
     info_obj_addr: bytes &length=ioa_length &convert=$$.to_uint(Spicy::ByteOrder::Little) if (!seq); #not 100% sure that the length is always correct
@@ -399,6 +427,38 @@ type Single_Point_Information_With_TTCP56 = unit (seq : bool){
     }
 };
 
+#31
+type Double_Point_Information_With_TTCP56 = unit (seq : bool){ 
+    info_obj_addr: bytes &length=ioa_length &convert=$$.to_uint(Spicy::ByteOrder::Little) if (!seq); #not 100% sure that the length is always correct
+    single_point_information_with_quality_descriptor : DIQ;
+    cp56time2a : CP56TIME2A;#bytes &length=7;
+    on %init {
+    #print "INIT 31";
+    }
+};
+
+#32
+type Step_Position_Information_With_TTCP56 = unit (seq : bool){ 
+    info_obj_addr: bytes &length=ioa_length &convert=$$.to_uint(Spicy::ByteOrder::Little) if (!seq); #not 100% sure that the length is always correct
+    position_value_with_transient_state_indicator : VTI;
+    quality_descriptor : QDS;
+    cp56time2a : CP56TIME2A;#bytes &length=7;
+    on %init {
+    #print "INIT 32";
+    }
+};
+
+#33
+type Bitstring_32_Bits_With_TTCP56 = unit (seq : bool){ #33
+    info_obj_addr: bytes &length=ioa_length &convert=$$.to_uint(Spicy::ByteOrder::Little) if (!seq); #not 100% sure that the length is always correct
+    binary_state_information : bitfield(32){val : 0..31; } &byteorder = Spicy::ByteOrder::Little;
+    quality_descriptor : QDS;
+    cp56time2a : CP56TIME2A;#bytes &length=7;
+    on %init {
+    print "INIT 33";
+    } 
+};
+
 #34
 export type Measured_Value_Normalized_Value_With_TTCP56 = unit(seq : bool) { 
     info_obj_addr: bytes &length=ioa_length &convert=$$.to_uint(Spicy::ByteOrder::Little) if (!seq);
@@ -407,6 +467,17 @@ export type Measured_Value_Normalized_Value_With_TTCP56 = unit(seq : bool) {
     cp56time2a : CP56TIME2A;#bytes &length=7;
     on %init {
     #   print "INIT 34";
+    }
+};
+
+#35
+type Measured_Value_Scaled_Value_With_TTCP56 = unit(seq : bool) { 
+    info_obj_addr: bytes &length=ioa_length &convert=$$.to_uint(Spicy::ByteOrder::Little) if (!seq);
+    scaled_value : bytes &length=2 &convert=$$.to_uint(Spicy::ByteOrder::Little);
+    double_point_information_with_quality_descriptor : QDS;
+    cp56time2a : CP56TIME2A;#bytes &length=7;
+    on %init {
+    #print "INIT 35";
     }
 };
 
@@ -430,6 +501,25 @@ type Single_Command = unit (seq : bool){ #45 only SEQ=0 allowed
     }
 };
 
+#46
+type Double_Command = unit (seq : bool){ #46 only SEQ=0 allowed
+    info_obj_addr: bytes &length=ioa_length &convert=$$.to_uint(Spicy::ByteOrder::Little) if (!seq); #not 100% sure that the length is always correct
+    double_command : DCO;
+    on %init {
+    #print "INIT 46";
+    }
+};
+
+#47
+type Regulating_Step_Command = unit (seq : bool){ #47 only SEQ=0 allowed
+    info_obj_addr: bytes &length=ioa_length &convert=$$.to_uint(Spicy::ByteOrder::Little) if (!seq); #not 100% sure that the length is always correct
+    regulating_step_command : RCO;
+    on %init {
+    #print "INIT 47";
+    }
+};
+
+
 #48
 type Set_Point_Command_Normalized_Value = unit (seq : bool){ #48
     info_obj_addr: bytes &length=ioa_length &convert=$$.to_uint(Spicy::ByteOrder::Little) if (!seq); 
@@ -440,6 +530,16 @@ type Set_Point_Command_Normalized_Value = unit (seq : bool){ #48
     }
 };
 
+#49
+type Set_Point_Command_Scaled_Value = unit (seq : bool){ #49
+    info_obj_addr: bytes &length=ioa_length &convert=$$.to_uint(Spicy::ByteOrder::Little) if (!seq); 
+    scaled_value : bytes &length=2 &convert=$$.to_uint(Spicy::ByteOrder::Little);
+    qualifier_of_set-point_command: QOS;
+    on %init {
+    #print "INIT 49";
+    }
+};
+
 #50
 type Set_Point_Command_Short_Floating_Point_Value = unit (seq : bool){ #50
     info_obj_addr: bytes &length=ioa_length &convert=$$.to_uint(Spicy::ByteOrder::Little) if (!seq); 
@@ -447,6 +547,15 @@ type Set_Point_Command_Short_Floating_Point_Value = unit (seq : bool){ #50
     qualifier_of_set-point_command: QOS;
     on %init {
     #print "INIT 50";
+    }
+};
+
+#51
+type Bitstring_32_Bits_Command = unit (seq : bool){ #51
+    info_obj_addr: bytes &length=ioa_length &convert=$$.to_uint(Spicy::ByteOrder::Little) if (!seq); 
+    binary_state_information : bitfield(32){val : 0..31; } &byteorder = Spicy::ByteOrder::Little;
+    on %init {
+    print "INIT 51";
     }
 };
 
@@ -609,14 +718,14 @@ type SCO = bitfield(8) {
 #Double command
 type DCO = bitfield(8) {
     dcs : 0..1;
-    qu : 2..6; #not topical
+    qu : 2..6; #no pulse defined / not topical
     se : 7; #invalid
 };
 
 #Regulating step command
 type RCO = bitfield(8) {
     rcs : 0..1;
-    qu : 2..6; #not topical
+    qu : 2..6; #no pulse defined / not topical
     se : 7; #invalid
 };
 

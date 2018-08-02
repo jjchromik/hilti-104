@@ -32,12 +32,22 @@ export {
 global m_sp_na_counter = 0;
 global m_dp_na_counter = 0;
 global m_st_na_counter = 0;
+global m_bo_na_counter = 0;
 global m_me_na_counter = 0;
 global m_sp_tb_counter = 0;
+global m_dp_tb_counter = 0;
+global m_st_tb_counter = 0;
+global m_bo_tb_counter = 0;
 global m_me_td_counter = 0;
+global m_me_te_counter = 0;
+global m_me_tf_counter = 0;
 global c_se_na_counter = 0;
+global c_se_nb_counter = 0;
 global c_se_ta_counter = 0;
 global c_sc_ta_counter = 0;
+global c_dc_na_counter = 0;
+global c_rc_na_counter = 0;
+global c_bo_na_counter = 0;
 global m_ei_na_counter = 0;
 global c_ic_na_counter = 0;
 global c_ci_na_counter = 0;
@@ -82,6 +92,10 @@ event t104::m_dp_na_asdu(c: connection, cot: cause) {
 event t104::m_st_na_asdu(c: connection, cot: cause) {
 	m_st_na_counter += 1;
 }
+#7
+event t104::m_bo_na_asdu(c: connection, cot: cause) {
+	m_bo_na_counter += 1;
+}
 #9
 event t104::m_me_na_asdu(c: connection, cot: cause) {
 	m_me_na_counter += 1;
@@ -90,13 +104,49 @@ event t104::m_me_na_asdu(c: connection, cot: cause) {
 event t104::m_sp_tb_asdu(c: connection, cot: cause) {
 	m_sp_tb_counter += 1;
 }
+#31
+event t104::m_dp_tb_asdu(c: connection, cot: cause) {
+	m_dp_tb_counter += 1;
+}
+#32
+event t104::m_st_tb_asdu(c: connection, cot: cause) {
+	m_st_tb_counter += 1;
+}
+#33
+event t104::m_bo_tb_asdu(c: connection, cot: cause) {
+	m_bo_tb_counter += 1;
+}
 #34
 event t104::m_me_td_asdu(c: connection, cot: cause) { 
 	m_me_td_counter += 1;
 }
+#35
+event t104::m_me_te_asdu(c: connection, cot: cause) { 
+	m_me_te_counter += 1;
+}
+#36
+event t104::m_me_tf_asdu(c: connection, cot: cause) { 
+	m_me_tf_counter += 1;
+}
+#46
+event t104::c_dc_na_asdu(c: connection, cot: cause) {
+	c_dc_na_counter += 1;
+}
+#47
+event t104::c_rc_na_asdu(c: connection, cot: cause) {
+	c_rc_na_counter += 1;
+}
 #48
 event t104::c_se_na_asdu(c: connection, cot: cause) {
 	c_se_na_counter += 1;
+}
+#49
+event t104::c_se_nb_asdu(c: connection, cot: cause) {
+	c_se_nb_counter += 1;
+}
+#51
+event t104::c_bo_na_asdu(c: connection, cot: cause) {
+	c_bo_na_counter += 1;
 }
 #58
 event t104::c_sc_ta_asdu(c: connection, cot: cause) {
@@ -146,10 +196,20 @@ event bro_done () {
 	print_debug(fmt("1: m_sp_na_counter: %d", m_sp_na_counter));
 	print_debug(fmt("3: m_dp_na_counter: %d", m_dp_na_counter));
 	print_debug(fmt("5: m_st_na_counter: %d", m_st_na_counter));
+	print_debug(fmt("7: m_bo_na_counter: %d", m_bo_na_counter));
 	print_debug(fmt("9: m_me_na_counter: %d", m_me_na_counter));
 	print_debug(fmt("30: m_sp_tb_counter: %d", m_sp_tb_counter));
+	print_debug(fmt("31: m_dp_tb_counter: %d", m_dp_tb_counter));
+	print_debug(fmt("32: m_st_tb_counter: %d", m_st_tb_counter));
+	print_debug(fmt("33: m_bo_tb_counter: %d", m_bo_tb_counter));
 	print_debug(fmt("34: m_me_td_counter: %d", m_me_td_counter));
+	print_debug(fmt("35: m_me_te_counter: %d", m_me_te_counter));
+	print_debug(fmt("36: m_me_tf_counter: %d", m_me_tf_counter));
+	print_debug(fmt("46: c_dc_na_counter: %d", c_dc_na_counter));
+	print_debug(fmt("47: c_rc_na_counter: %d", c_rc_na_counter));
 	print_debug(fmt("48: c_se_na_counter: %d", c_se_na_counter));
+	print_debug(fmt("49: c_se_nb_counter: %d", c_se_nb_counter));
+	print_debug(fmt("51: c_bo_na_counter: %d", c_bo_na_counter));
 	print_debug(fmt("58: c_sc_ta_counter: %d", c_sc_ta_counter));
 	print_debug(fmt("61: c_se_ta_counter: %d", c_se_ta_counter));
 	print_debug(fmt("70: m_ei_na_counter: %d", m_ei_na_counter));
