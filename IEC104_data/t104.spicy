@@ -305,7 +305,7 @@ export type Asdu = unit {
         #print "INIT ASDU";
     }
     on %done {
-        print self;
+        #print self;
     }
 }; 
 
