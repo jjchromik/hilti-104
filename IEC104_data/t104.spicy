@@ -36,7 +36,7 @@ export type Info_obj_code= enum {
     M_DP_TA_1 = 4,      # X: example of Type ID not applicable to the companion standard
     M_ST_NA_1 = 5,      #implemented JCh
     M_ST_TA_1 = 6,      # X: example of Type ID not applicable to the companion standard
-    M_BO_NA_1 = 7,      #implemented JCh/ test the biststing 
+    M_BO_NA_1 = 7,      #implemented JCh/ test the bitstring 
     M_BO_TA_1 = 8,
     M_ME_NA_1 = 9,      #implemented R. Udd
     M_ME_TA_1 = 10,
@@ -77,11 +77,11 @@ export type Info_obj_code= enum {
     #process information in control direction with time tag 58-64
     C_SC_TA_1 = 58,     #implemented JCh
     C_DC_TA_1 = 59,     #implemented RF
-    C_RC_TA_1 = 60,
+    C_RC_TA_1 = 60,     #implemented JCh
     C_SE_TA_1 = 61,     #implemented JCh
-    C_SE_TB_1 = 62,
+    C_SE_TB_1 = 62,     #implemented JCh
     C_SE_TC_1 = 63,     #implemented RF
-    C_BO_TA_1 = 64,
+    C_BO_TA_1 = 64,     #implemented JCh /test the bitstring? 
     #65-69 reserved
     #system information in monitor direction 70-99
     M_EI_NA_1 = 70,     #implemented JCh
@@ -281,10 +281,16 @@ export type Asdu = unit {
         Info_obj_code::C_SC_TA_1 -> c_sc_ta_1 : Single_Command_With_TTCP56(self.data_unit_identifier.seq)[self.data_unit_identifier.num_ix];
         #59
         Info_obj_code::C_DC_TA_1 -> c_dc_ta_1 : Double_Command_With_TTCP56(self.data_unit_identifier.seq)[self.data_unit_identifier.num_ix];        
+        #60 
+        Info_obj_code::C_RC_TA_1 -> c_rc_ta_1 : Regulating_Step_Command_With_TTCP56(self.data_unit_identifier.seq)[self.data_unit_identifier.num_ix];
         #61
         Info_obj_code::C_SE_TA_1 -> c_se_ta_1 : Set_Point_Command_Normalized_Value_With_TTCP56(self.data_unit_identifier.seq)[self.data_unit_identifier.num_ix];
+        #62 
+        Info_obj_code::C_SE_TB_1 -> c_se_tb_1 : Set_Point_Command_Scaled_Value_With_TTCP56(self.data_unit_identifier.seq)[self.data_unit_identifier.num_ix];
         #63
         Info_obj_code::C_SE_TC_1 -> c_se_tc_1 : Set_Point_Command_Shot_Floating_Point_With_TTCP56(self.data_unit_identifier.seq)[self.data_unit_identifier.num_ix];        
+        #64 
+        Info_obj_code::C_BO_TA_1 -> c_bo_ta_1 : Bitstring_32_Bits_Command_With_TTCP56(self.data_unit_identifier.seq)[self.data_unit_identifier.num_ix];
         #70 
         Info_obj_code::M_EI_NA_1 -> m_ei_na_1 : End_Of_Initialization(self.data_unit_identifier.seq)[self.data_unit_identifier.num_ix];
         #100
@@ -592,14 +598,35 @@ type Double_Command_With_TTCP56 = unit (seq : bool){ #59 only SEQ=0 allowed
     }
 };
 
+#60 
+type Regulating_Step_Command_With_TTCP56 = unit (seq : bool){ 
+    info_obj_addr: bytes &length=ioa_length &convert=$$.to_uint(Spicy::ByteOrder::Little) if (!seq); 
+    regulating_step_command : RCO;
+    cp56time2a : CP56TIME2A;
+    on %init {
+    #print "INIT 60";
+    }
+};
+
 #61
 type Set_Point_Command_Normalized_Value_With_TTCP56 = unit (seq : bool){ #61 only SEQ=0 allowed
     info_obj_addr: bytes &length=ioa_length &convert=$$.to_uint(Spicy::ByteOrder::Little) if (!seq); 
-    normalized_value: bytes &length=2 &convert=$$.to_uint(Spicy::ByteOrder::Little);   # TODO: set as separate value
+    normalized_value: bytes &length=2 &convert=$$.to_uint(Spicy::ByteOrder::Little);   
     qos : QOS;  # qualifier of setpoint command
     cp56time2a : CP56TIME2A;#bytes &length=7;
     on %init {
     #print "INIT 61";
+    }
+};
+
+#62 
+type Set_Point_Command_Scaled_Value_With_TTCP56 = unit (seq : bool){ 
+    info_obj_addr: bytes &length=ioa_length &convert=$$.to_uint(Spicy::ByteOrder::Little) if (!seq); 
+    scaled_value : bytes &length=2 &convert=$$.to_uint(Spicy::ByteOrder::Little);
+    qualifier_of_set-point_command: QOS;
+    cp56time2a : CP56TIME2A;
+    on %init {
+    #print "INIT 62";
     }
 };
 
@@ -611,6 +638,16 @@ type Set_Point_Command_Shot_Floating_Point_With_TTCP56 = unit (seq : bool){ #63 
     cp56time2a : CP56TIME2A;#bytes &length=7;
     on %init {
     #print "INIT 63";
+    }
+};
+
+#64 
+type Bitstring_32_Bits_Command_With_TTCP56 = unit (seq : bool){ 
+    info_obj_addr: bytes &length=ioa_length &convert=$$.to_uint(Spicy::ByteOrder::Little) if (!seq); 
+    binary_state_information : bitfield(32){val : 0..31; } &byteorder = Spicy::ByteOrder::Little;
+    cp56time2a : CP56TIME2A;#bytes &length=7;
+    on %init {
+    #print "INIT 64";
     }
 };
 
