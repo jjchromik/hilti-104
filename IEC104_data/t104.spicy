@@ -393,7 +393,7 @@ type Bitstring_32_Bits = unit (seq : bool){ #7
     binary_state_information : bytes &length=4;# &byteorder = Spicy::ByteOrder::Little;  #bitfield(32){ val: 0..31; }
     quality_descriptor : QDS;
     on %init {
-    print "INIT 7";
+    #print "INIT 7";
     } 
 };
 
@@ -474,7 +474,7 @@ type Bitstring_32_Bits_With_TTCP56 = unit (seq : bool){ #33
     quality_descriptor : QDS;
     cp56time2a : CP56TIME2A;#bytes &length=7;
     on %init {
-    print "INIT 33";
+    #print "INIT 33";
     } 
 };
 
@@ -574,7 +574,7 @@ type Bitstring_32_Bits_Command = unit (seq : bool){ #51
     info_obj_addr: bytes &length=ioa_length &convert=$$.to_uint(Spicy::ByteOrder::Little) if (!seq); 
     binary_state_information : bitfield(32){val : 0..31; } &byteorder = Spicy::ByteOrder::Little;
     on %init {
-    print "INIT 51";
+    #print "INIT 51";
     }
 };
 
