@@ -44,63 +44,70 @@ Process information in monitoring direction 1-29
 | M_PS_NA_1	| 20 		| 				|
 | M_ME_ND_1	| 21 		| Y				|
 | 			| 22-29 reserved	|		|
-|| Process information in monitoring direction cont’d 30-44 ||
+<!-- || Process information in monitoring direction cont’d 30-44 || -->
 | M_SP_TB_1	| 30 		| Y 			|
+| M_DP_TB_1	| 31 		| Y 			|
+| M_ST_TB_1	| 32 		| Y 			|
+| M_BO_TB_1	| 33 		| Y 			|
+| M_ME_TD_1	| 34 		| Y 			|
+| M_ME_TE_1	| 35 		| Y 			|
+| M_ME_TF_1	| 36 		| Y 			|
+| M_IT_TB_1	| 37 		|   			|
+| M_EP_TD_1	| 38 		|   			|
+| M_EP_TE_1	| 39 		|   			|
+| M_EP_TF_1	| 40 		|   			|
+|			| 41-44 reserved	|		|
+<!--     #process information in control direction 45-51 -->
+| C_SC_NA_1	| 45 		| Y 			|
+| C_DC_NA_1	| 46 		| Y 			|
+| C_RC_NA_1	| 47 		| Y 			|
+| C_SE_NA_1	| 48 		| Y 			|
+| C_SE_NB_1	| 49 		| Y 			|
+| C_SE_NC_1	| 50 		| Y 			|
+| C_BO_NA_1	| 51 		| Y 			|
+|			| 52-57 reserved	|		|
+    <!-- #process information in control direction with time tag 58-64 -->
+| C_SC_TA_1	| 58 		| Y 			|
+| C_DC_TA_1	| 59 		| Y 			|
+| C_RC_TA_1	| 60 		| Y 			|
+| C_SE_TA_1	| 61 		| Y 			|
+| C_SE_TB_1	| 62 		| Y 			|
+| C_SE_TC_1	| 63 		| Y 			|
+| C_BO_TA_1	| 64 		| Y 			|
+|			| 65-69 reserved	|		|
+<!-- #system information in monitor direction 70-99 -->
+| M_EI_NA_1 | 70 		| Y 			|
+|			| 71-99 reserved	|		|
+<!-- #system information in control direction 100-109 -->
+| C_IC_NA_1	| 100 		| Y 			|
+| C_CI_NA_1	| 101 		| Y 			|
+| C_RD_NA_1	| 102 		| Y 			|
+| C_CS_NA_1	| 103 		| Y 			|
+| C_TS_NA_1	| 104 		|   			|
+| C_RP_NA_1	| 105 		|   			|
+| C_CD_NA_1	| 106 		|   			|
+| C_TS_TA_1	| 107 		| Y 			|
+| 			| 108-109 reserved 	|		|
+<!-- #parameter in control direction 110-119 -->
+| P_ME_NA_1	| 110 		|				|
+| P_ME_NB_1	| 111 		|				|
+| P_ME_NC_1	| 112 		|				|
+| P_AC_NA_1	| 113 		|				|
+|			| 114-119 reserved	|		|
+<!-- #file transfer 120-127 -->
+| F_FR_NA_1	| 120 		|				|
+| F_SR_NA_1	| 121 		|				|
+| F_SC_NA_1	| 122 		|				|
+| F_LS_NA_1	| 123 		|				|
+| F_AF_NA_1	| 124 		|				|
+| F_SG_NA_1	| 125 		|				|
+| F_DR_TA_1	| 126 		|				|
+| 			| 127 reserved		|		|
+|PROPRIETARY| 128-255			|		|
+| C_HU_NA_P	| 136 		|				|
+| C_LD_NA_P	| 137 		|				|
+| C_IH_NA_P	| 142 		| Y				|
+| C_SU_NA_P	| 143 		| Y				|
+| X_DS_NA_P	| 200 		| Y				|
+| X_MP_NA_P | 201 		|				|
 
-    M_DP_TB_1 = 31,     #implemented JCh
-    M_ST_TB_1 = 32,     #implemented JCh
-    M_BO_TB_1 = 33,     #implemented JCh /test the bitstring? 
-    M_ME_TD_1 = 34,     #implemented JCh
-    M_ME_TE_1 = 35,     #implemented JCh
-    M_ME_TF_1 = 36,     #implemented JCh
-    M_IT_TB_1 = 37,
-    M_EP_TD_1 = 38,
-    M_EP_TE_1 = 39,
-    M_EP_TF_1 = 40,
-    #41-44 reserved
-    #process information in control direction 45-51
-    C_SC_NA_1 = 45,     #implemented R. Udd
-    C_DC_NA_1 = 46,     #implemented JCh 
-    C_RC_NA_1 = 47,     #implemented JCh 
-    C_SE_NA_1 = 48,     #implemented JCh
-    C_SE_NB_1 = 49,     #implemented JCh
-    C_SE_NC_1 = 50,     #implemented JCh
-    C_BO_NA_1 = 51,     #implemented JCh /test the bitstring? 
-    #52-57 reserved
-    #process information in control direction with time tag 58-64
-    C_SC_TA_1 = 58,     #implemented JCh
-    C_DC_TA_1 = 59,     #implemented RF
-    C_RC_TA_1 = 60,     #implemented JCh
-    C_SE_TA_1 = 61,     #implemented JCh
-    C_SE_TB_1 = 62,     #implemented JCh
-    C_SE_TC_1 = 63,     #implemented RF
-    C_BO_TA_1 = 64,     #implemented JCh /test the bitstring? 
-    #65-69 reserved
-    #system information in monitor direction 70-99
-    M_EI_NA_1 = 70,     #implemented JCh
-    #71-99 reserved
-    #system information in control direction 100-109
-    C_IC_NA_1 = 100,    #implemented R. Udd
-    C_CI_NA_1 = 101,    #implemented JCh
-    C_RD_NA_1 = 102,    #implemented JCh
-    C_CS_NA_1 = 103,    #implemented JCh
-    C_TS_NA_1 = 104,
-    C_RP_NA_1 = 105,
-    C_CD_NA_1 = 106,
-    C_TS_TA_1 = 107,    #implemented JCh
-    #108-109 reserved 
-    #parameter in control direction 110-119
-    P_ME_NA_1 = 110,
-    P_ME_NB_1 = 111,
-    P_ME_NC_1 = 112,
-    P_AC_NA_1 = 113,
-    #114-119 reserved
-    #file transfer 120-127
-    F_FR_NA_1 = 120,
-    F_SR_NA_1 = 121, 
-    F_SC_NA_1 = 122,
-    F_LS_NA_1 = 123,
-    F_AF_NA_1 = 124,
-    F_SG_NA_1 = 125,
-    F_DR_TA_1 = 126,
-    #127 reserved
