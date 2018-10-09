@@ -44,9 +44,9 @@ Process information in monitoring direction 1-29
 | M_PS_NA_1	| 20 		| 				|
 | M_ME_ND_1	| 21 		| Y				|
 |---------------------------------------|
-| 22-29 reserved 						|
-| process information in monitoring direction cont’d 30-44|
-|---------------------------------------|
+| 22-29 reserved 						|||
+| process information in monitoring direction cont’d 30-44|||
+|---------------------------------------|||
 
     M_SP_TB_1 = 30,     #implemented R. Udd
     M_DP_TB_1 = 31,     #implemented JCh
