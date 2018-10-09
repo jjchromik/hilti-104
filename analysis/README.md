@@ -5,8 +5,8 @@ The analysis of the parser's throughput is necessary to understand whether this 
 
 Throughput as function of the PCAP file size
 
-![throughput](https://github.com/jjchromik/hilti-104/blob/master/analysis/var_tcp_len_through.png  =50x "Throughput as function of the PCAP file size")
+![throughput](https://github.com/jjchromik/hilti-104/blob/master/analysis/var_tcp_len_through.png  "Throughput as function of the PCAP file size")
 
 Processing time as function of the PCAP file size
 
-![processing time](https://github.com/jjchromik/hilti-104/blob/master/analysis/var_tcp_len_time.png  =150x "Processing time as function of the PCAP file size")
+![processing time](https://github.com/jjchromik/hilti-104/blob/master/analysis/var_tcp_len_time.png "Processing time as function of the PCAP file size")
