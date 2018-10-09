@@ -43,12 +43,10 @@ Process information in monitoring direction 1-29
 | M_EP_TC_1	| 19 		| 				|
 | M_PS_NA_1	| 20 		| 				|
 | M_ME_ND_1	| 21 		| Y				|
-| <td colspan=3> ---------------------------------------
-<td colspan=3> 22-29 reserved 						
-<td colspan=3> process information in monitoring direction cont’d 30-44
-<td colspan=3> ---------------------------------------
+| 			| 22-29 reserved	|		|
+|| Process information in monitoring direction cont’d 30-44 ||
+| M_SP_TB_1	| 30 		| Y 			|
 
-    M_SP_TB_1 = 30,     #implemented R. Udd
     M_DP_TB_1 = 31,     #implemented JCh
     M_ST_TB_1 = 32,     #implemented JCh
     M_BO_TB_1 = 33,     #implemented JCh /test the bitstring? 
