@@ -12,13 +12,14 @@ For better understanding of the relations between the Spicy grammar, the event f
 
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=3sQ6thi_BR0
 " target="_blank"><img src="http://img.youtube.com/vi/3sQ6thi_BR0/0.jpg" 
-alt="Robin Sommer" width="240" height="180" border="10" /></a>
+alt="BinPAC++ Demo by Robin Sommer" width="240" height="180" border="10" /></a>
 
 
 
 ## Currently implemented Type IDs
 
 Process information in monitoring direction 1-29
+
 | Type ID 	| Number 	| Implemented? 	|
 |-----------|-----------|--------------	|
 | M_SP_NA_1	| 1 		| Y 			|
@@ -28,8 +29,8 @@ Process information in monitoring direction 1-29
 | M_ST_NA_1 | 5 		| Y 			|
 | M_ST_TA_1	| 6*		| 				|
 | M_BO_NA_1	| 7 		| Y				| 
+| M_BO_TA_1	| 8 		|				|
 
-    M_BO_TA_1 = 8,
     M_ME_NA_1 = 9,      #implemented R. Udd
     M_ME_TA_1 = 10,
     M_ME_NB_1 = 11,     #implemented JCh
