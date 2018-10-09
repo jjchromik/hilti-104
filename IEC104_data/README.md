@@ -43,7 +43,7 @@ Process information in monitoring direction 1-29
 | M_EP_TC_1	| 19 		| 				|
 | M_PS_NA_1	| 20 		| 				|
 | M_ME_ND_1	| 21 		| Y				|
-<td colspan=3> ---------------------------------------
+| <td colspan=3> ---------------------------------------
 <td colspan=3> 22-29 reserved 						
 <td colspan=3> process information in monitoring direction cont’d 30-44
 <td colspan=3> ---------------------------------------
