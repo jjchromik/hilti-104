@@ -30,22 +30,24 @@ Process information in monitoring direction 1-29
 | M_ST_TA_1	| 6*		| 				|
 | M_BO_NA_1	| 7 		| Y				| 
 | M_BO_TA_1	| 8 		|				|
+| M_ME_NA_1	| 9 		| Y 			|
+| M_ME_TA_1 | 10 		|				|
+| M_ME_NB_1	| 11 		| Y 			|
+| M_ME_TB_1	| 12 		| 				|
+| M_ME_NC_1	| 13 		| Y 			|
+| M_ME_TC_1	| 14 		| 				|
+| M_IT_NA_1	| 15 		| 				|
+| M_IT_TA_1	| 16 		| 				|
+| M_EP_TA_1	| 17 		| 				|
+| M_EP_TB_1	| 18 		| 				|
+| M_EP_TC_1	| 19 		| 				|
+| M_PS_NA_1	| 20 		| 				|
+| M_ME_ND_1	| 21 		| Y				|
+|---------------------------------------|
+| 22-29 reserved 						|
+| process information in monitoring direction cont’d 30-44|
+|---------------------------------------|
 
-    M_ME_NA_1 = 9,      #implemented R. Udd
-    M_ME_TA_1 = 10,
-    M_ME_NB_1 = 11,     #implemented JCh
-    M_ME_TB_1 = 12,
-    M_ME_NC_1 = 13,     #implemented JCh
-    M_ME_TC_1 = 14,
-    M_IT_NA_1 = 15,
-    M_IT_TA_1 = 16,
-    M_EP_TA_1 = 17,
-    M_EP_TB_1 = 18,
-    M_EP_TC_1 = 19, 
-    M_PS_NA_1 = 20, 
-    M_ME_ND_1 = 21,     #implemented RF
-    #22-29 reserved
-    #process information in monitoring direction cont’d 30-44
     M_SP_TB_1 = 30,     #implemented R. Udd
     M_DP_TB_1 = 31,     #implemented JCh
     M_ST_TB_1 = 32,     #implemented JCh
